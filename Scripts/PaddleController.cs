@@ -18,7 +18,8 @@ public class PaddleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveBall(GetInput()); 
+        Debug.Log(spd);
+        MovePaddle(GetInput()); 
     }
 
     private Vector2 GetInput()
@@ -33,8 +34,9 @@ public class PaddleController : MonoBehaviour
         }
         return Vector2.zero;
     }
-    private void MoveBall(Vector2 move)
+    private void MovePaddle(Vector2 move)
     {
+        // Debug.Log("Test: " + move);
         rb.velocity = move;
         transform.Translate(rb.velocity * Time.deltaTime);
     }
