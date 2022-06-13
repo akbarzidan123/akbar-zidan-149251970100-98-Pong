@@ -25,4 +25,10 @@ public class BallController : MonoBehaviour
     {
         transform.position = new Vector3(resetPosition.x, resetPosition.y, 2);
     }
+
+    public void ActivateSpeedUp(float magnitude)
+    {
+        rb.velocity *= magnitude;
+        Debug.Log(rb.velocity);
+    }
 }
