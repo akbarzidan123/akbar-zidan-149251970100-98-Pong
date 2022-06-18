@@ -69,4 +69,26 @@ public class PowerUpManager : MonoBehaviour
             RemovePowerUp(powerUpList[0]); 
         } 
     }
+
+    public void durationScale(GameObject paddle)
+    {
+        StartCoroutine(FixSizeScale(paddle));
+    }
+
+    IEnumerator FixSizeScale(GameObject paddle)
+    {
+        yield return new WaitForSeconds(5.0f);
+        paddle.transform.localScale =  new Vector3(paddle.transform.localScale.x , paddle.transform.localScale.y / 2);
+    }
+    public void durationSpd(GameObject paddle)
+    {
+        StartCoroutine(FixSpdPaddle(paddle));
+    }
+
+    IEnumerator FixSpdPaddle(GameObject paddle)
+    {
+        yield return new WaitForSeconds(5.0f);
+        int spdTemp = paddle.transform.GetComponent<PaddleController>().getSpd();
+        paddle.transform.GetComponent<PaddleController>().setSpd(spdTemp/2);
+    }
 }

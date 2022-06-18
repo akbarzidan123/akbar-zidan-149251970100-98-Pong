@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PaddleController : MonoBehaviour
 {
+    public PUPaddleSpdUp paddleSpdUp;
+    public PUSizeUpController paddleSizeUp;
     public int spd;
     public KeyCode uPKey;
     public KeyCode downKey;
     private Rigidbody2D rb;
+    public Collider2D ball;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +21,8 @@ public class PaddleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(spd);
         MovePaddle(GetInput()); 
+        Debug.Log(spd);
     }
 
     private Vector2 GetInput()
@@ -39,5 +42,18 @@ public class PaddleController : MonoBehaviour
         // Debug.Log("Test: " + move);
         rb.velocity = move;
         transform.Translate(rb.velocity * Time.deltaTime);
+    }
+    public void setSpd(int spd)
+    {
+        this.spd = spd;
+    }
+    public int getSpd()
+    {
+        return spd;
+    }
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        paddleSpdUp.setPaddleIndex(gameObject.transform.GetSiblingIndex());
+        paddleSizeUp.setPaddleIndex(gameObject.transform.GetSiblingIndex());
     }
 }

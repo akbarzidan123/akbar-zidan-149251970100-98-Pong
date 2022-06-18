@@ -24,4 +24,8 @@ public class MainMenuController : MonoBehaviour
     {
         Debug.Log("Created by Saya");
     }
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 }
